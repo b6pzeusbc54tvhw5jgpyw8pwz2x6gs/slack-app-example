@@ -1,12 +1,32 @@
-module.exports = {
-  presets: [
-    "@babel/env",
-    ["@babel/typescript", {
-      isTSX: true,
-      allExtensions: true,
-    }],
-  ],
-  plugins: [
-    '@babel/plugin-transform-runtime',
-  ]
+const _ = require('lodash')
+
+module.exports = api => {
+  return (api.env('test')) ? {
+    presets: [
+      ["@babel/env",{
+        targets: { node: 'current' }
+      }],
+      ["@babel/typescript", {
+        isTSX: true,
+        allExtensions: true,
+      }],
+    ],
+    plugins: [
+      './asset/babel-plugin-rewire/babel-plugin-rewire.js',
+      '@babel/plugin-transform-runtime',
+    ]
+  } : {
+    presets: [
+      ["@babel/env",{
+        targets: { node: 'current' }
+      }],
+      ["@babel/typescript", {
+        isTSX: true,
+        allExtensions: true,
+      }],
+    ],
+    plugins: [
+      '@babel/plugin-transform-runtime',
+    ]
+  }
 }

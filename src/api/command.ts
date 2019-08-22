@@ -37,7 +37,6 @@ router.all('/', async (req, res) => {
   console.log('req.body')
   console.log(req.body)
 
-
   const [err,result] = await to(web.chat.postMessage({
     text: body.text,
     channel: body.channel_id,
@@ -46,7 +45,7 @@ router.all('/', async (req, res) => {
       {
         "text": "Choose a game to play",
         "fallback": "You are unable to choose a game",
-        "callback_id": "wopr_game",
+        "callback_id": "123",
         "color": "#3AA3E3",
         "actions": [
           {
