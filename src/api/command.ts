@@ -3,6 +3,8 @@ import { Router } from 'express'
 import to from 'await-to-js'
 import bodyParser from 'body-parser'
 import { IncomingMessage, ServerResponse } from 'http';
+import { createGroupBySlackChannel, getGroup } from '../model/group'
+import { getBEHRError } from '../util';
 
 const web = new WebClient(process.env.SLACK_TOKEN)
 
@@ -28,6 +30,19 @@ interface ISlashCommandRequest {
   response_url: string
   trigger_id: string
 }
+
+router.all('/test2', async (req, res, next) => {
+  const [err, group] = await to(getGroup('teamA:groupB4'))
+  if (err || !group) return next(getBEHRError(err, 'createGroupBySlackChannel'))
+
+  res.send(group)
+})
+router.all('/test', async (req, res, next) => {
+  const [err, groupId] = await to(createGroupBySlackChannel('teamA','groupB2'))
+  if (err || !groupId) return next(getBEHRError(err, 'createGroupBySlackChannel'))
+
+  res.send(groupId)
+})
 
 router.all('/', async (req, res) => {
   const body: ISlashCommandRequest  = req.body

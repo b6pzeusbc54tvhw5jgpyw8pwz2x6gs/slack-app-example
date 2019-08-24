@@ -8,6 +8,6 @@ const app = express()
 
 // app.use(bodyParser.json())
 
-app.use('/api/command', routerCommand)
-app.use('/api/action', routerAction)
+app.use('/slack/command', routerCommand)
+app.use('/slack/action', routerAction)
 app.listen(port, () => console.log(`listening`))

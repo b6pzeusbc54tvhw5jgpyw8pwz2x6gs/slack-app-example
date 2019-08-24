@@ -19,6 +19,13 @@ export SLACK_SIGNING_SECRET=6bffffffffffffffffffffffffffff0f
 $ yarn dev
 ```
 
+## local dynamodb 실행 및 table 생성
+
+```shell
+$ docker run -p 8000:8000 -d amazon/dynamodb-local
+$ npx babel-node --extensions ".ts" -- bin/create-local-dynamodb-table.ts
+```
+
 ## ngrok 실행
 별도 터미널에서 실행
 

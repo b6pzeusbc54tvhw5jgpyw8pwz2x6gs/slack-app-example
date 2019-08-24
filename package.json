@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "nodemon src/index.ts --exec babel-node -- -x .ts"
+    "dev": "nodemon src/index.ts --exec babel-node -- -x .ts",
+    "run-db": ""
   },
   "dependencies": {
     "@slack/web-api": "^5.1.0",
@@ -22,6 +23,7 @@
     "@types/body-parser": "^1.17.0",
     "@types/express": "^4.17.0",
     "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "aws-sdk-mock": "^4.5.0",
     "babel-jest": "^24.9.0",
